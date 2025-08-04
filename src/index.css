@@ -27,4 +27,11 @@ body {
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+  }
 }

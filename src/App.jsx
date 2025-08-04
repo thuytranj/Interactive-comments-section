@@ -3,9 +3,13 @@ import './App.css'
 import data from './data.json'
 import Comment from './comment.jsx'
 import AddComment from './addComment.jsx'
+import DeleteModal from './delete-modal.jsx'
 
 function App() {
   const [comments, setComment] = useState(data.comments)
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [deleteCommentId, setDeleteCommentId] = useState(null);
+
 
   function handleReply(idComment, userName, content) {
     const today = new Date();
@@ -75,6 +79,7 @@ function App() {
     setComment (updateComments)
   }
   
+  //delete comment
   function handleDelete (commentId) {
     function deleteComment(comments) {
       return comments.filter(comment => comment.id !== commentId).map(comment => ({
@@ -83,14 +88,26 @@ function App() {
       }));
     }
 
-    const updatedComments = deleteComment(comments);
-    setComment (updatedComments)
+    const updatedComments = deleteComment(comments)
+    setDeleteModalOpen(false)
+    setComment(updatedComments)
+    setDeleteCommentId(null)
   }
+
+  function showDeleteModal(commentId) {
+    setDeleteCommentId(commentId)
+    setDeleteModalOpen(true)
+  }
+
+  function closeDeleteModal() {
+    setDeleteModalOpen(false)
+  }
+
   function showComment(comment) {
     return (
       <div key={`${comment.id}-${comment.user.username}-${Date.now()}`} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         
-        <Comment comment={comment} currentUser={data.currentUser} onReply={handleReply} onUpdate={handleUpdate} onDelete={handleDelete} />
+        <Comment comment={comment} currentUser={data.currentUser} onReply={handleReply} onUpdate={handleUpdate} onShowDeleteModal={showDeleteModal} />
       
       {comment.replies.length > 0 && <div className="replies">
         {comment.replies.map (reply => showComment(reply))}
@@ -105,7 +122,8 @@ function App() {
   return (
     <>
       {allComments}
-      <AddComment currentUser={data.currentUser} onReply={handleReply}/>
+      <AddComment currentUser={data.currentUser} onReply={handleReply} />
+      {isDeleteModalOpen && <DeleteModal isOpenModal={isDeleteModalOpen} onDelete={handleDelete} commentId={deleteCommentId} onClose={closeDeleteModal} />}
     </>
   )
 }
