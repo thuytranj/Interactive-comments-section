@@ -1,0 +1,38 @@
+.addComment-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-radius: 10px;
+    gap: 1rem;
+}
+
+.addComment-box > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.addComment-box > textarea {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid hsl(223, 19%, 93%);
+    border-radius: 5px;
+    font-size: 16px;
+    color: hsl(211, 10%, 45%);
+}
+.addComment-box > button {
+    background-color: hsl(238, 40%, 52%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.addComment-box>button:hover {
+    opacity: 0.5;
+}

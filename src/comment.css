@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+.comment-box, .reply-box, .update-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    border-radius: 10px;
+    color: hsl(211, 10%, 45%);
+}
+
+.score-box {
+    background-color: hsl(228, 33%, 97%);
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    color: hsl(238, 40%, 52%);
+    border-radius: 5px;
+    min-width: 20px;
+    height: 70px;
+}
+.minus, .plus {
+    cursor: pointer;
+    color: #C5C6EF;
+}
+
+.minus:hover, .plus:hover {
+    color: hsl(238, 40%, 52%);
+}
+
+.content-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info, .button-box {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-info > img, .reply-box > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.button-box {
+    font-weight: bold;
+}
+
+.delete-btn, .edit-btn, .reply-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.delete-btn {
+    color: hsl(358, 79%, 66%);
+}
+
+.edit-btn, .reply-btn {
+    color: hsl(238, 40%, 52%);
+    font-weight: bold;
+}
+
+.delete-btn:hover,
+.edit-btn:hover,
+.reply-btn:hover, .update-btn:hover {
+    opacity: 0.5;
+}
+.reply-box .reply-btn, .update-btn {
+    max-width: 100px;
+    background-color: hsl(238, 40%, 52%);
+    color: white;
+    font-weight: bold;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+textarea {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid hsl(223, 19%, 93%);
+    border-radius: 5px;
+    font-size: 16px;
+}
